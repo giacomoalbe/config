@@ -1,0 +1,27 @@
+session_name: AKIRA
+start_directory: ./
+windows:
+  - window_name: Code
+    panes:
+      - shell_command:
+        - cd src/
+        - vim
+  - window_name: Build
+    panes:
+      - shell_command:
+        - meson build --prefix=/usr
+        - cd build
+        - ninja
+  - window_name: Log
+    panes:
+      - shell_command:
+        - clear
+  - window_name: Git
+    panes:
+      - shell_command:
+        - gs
+  - window_name: DevilsPie
+    panes
+      - shell_command:
+        - export AKIRA_WORKSPACE=3
+        - devilspie2
