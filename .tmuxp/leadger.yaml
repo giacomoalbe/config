@@ -1,0 +1,11 @@
+session_name: LEDGER
+start_directory: ./
+windows:
+  - window_name: Postings
+    panes:
+      - shell_command:
+        - vim ledger.dat
+  - window_name: Ledger
+    panes:
+      - shell_command:
+        - clear
