@@ -1,0 +1,16 @@
+session_name: PHONOMETRICS
+start_directory: ~/Documents/Lavoro/Phonometrics
+windows:
+  - window_name: Scrapers
+    panes:
+      - shell_command:
+        - cd scrapers
+        - vim
+  - window_name: Server
+    panes:
+      - shell_command:
+        - clear
+  - window_name: Git
+    panes:
+      - shell_command:
+        - gs
