@@ -38,7 +38,7 @@ call plug#begin()
   Plug 'mhinz/vim-signify'             " show VCS changes
   Plug 'mileszs/ack.vim'               " ack/rg support
   Plug 'igankevich/mesonic'            " Meson Plugin for Vim
-  Plug 'editorconfig/editorconfig-vim'
+  Plug 'jremmen/vim-ripgrep'           " Add rg search
 
 " Navigation
   Plug 'scrooloose/nerdtree'
@@ -63,20 +63,8 @@ call plug#begin()
 
 " Code Analysis and Completion
   Plug 'StanAngeloff/php.vim', {'for': 'php'}
-  "Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
-
-  "Plug 'phpactor/phpactor', { 'do': ':call phpactor#Update()', 'for': 'php'}
-  "Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
-  "Plug 'ncm2/ncm2-ultisnips'
-  "Plug 'maralla/completor.vim'
-
-  " LanguageServer client for NeoVim.
-  "Plug 'autozimu/LanguageClient-neovim', {
-  "  \ 'branch': 'next',
-  "  \ 'do': 'bash install.sh',
-  "  \ }
 
 " Other Features
   Plug 'editorconfig/editorconfig-vim' " editorconfig support
@@ -130,34 +118,7 @@ call plug#end()
   set splitright
   set nolazyredraw             " No lazy redraw for redraw bug
 
-" split pane navigation
-"nnoremap <C-J> <C-W><C-J>
-"nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-L> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
-
-" PHPACTOR
-"" context-aware menu with all functions (ALT-m)
-"nnoremap <m-m> :call phpactor#ContextMenu()<cr>
-
-"nnoremap gd :call phpactor#GotoDefinition()<CR>
-"nnoremap gr :call phpactor#FindReferences()<CR>
-
-" Extract method from selection
-"vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
-" extract variable
-"vnoremap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
-"nnoremap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
-" extract interface
-"nnoremap <silent><Leader>rei :call phpactor#ClassInflect()<CR>
-
 " AIRLINE
-" let g:airline#extensions#tabline#enabled = 2
-" let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline#extensions#tabline#right_sep = ' '
-" let g:airline#extensions#tabline#right_alt_sep = '|'
 let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
@@ -334,46 +295,21 @@ nnoremap <silent><ESC> :nohlsearch<CR>
   let g:ale_set_quickfix=0
   let g:ale_list_window_size = 5
 
-  let g:ale_php_phpcbf_standard='PSR2'
-  let g:ale_php_phpcs_standard='phpcs.xml.dist'
-  let g:ale_php_phpmd_ruleset='phpmd.xml'
-
   let g:ale_fixers = {
     \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \ 'php': ['phpcbf', 'php_cs_fixer', 'remove_trailing_lines', 'trim_whitespace'],
     \ 'javascript': ['eslint'],
-    \}
+  \}
 
   let g:ale_fix_on_save = 1
 
-" indentline
+  " indentline
   let g:indentLine_setConceal = 0
   let g:indentLine_fileTypeExclude = ['json', 'markdown']
-
-  "NCM2
-  "augroup ncm2
-  "  au!
-  "  autocmd BufEnter * call ncm2#enable_for_buffer()
-  "  au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-  "  au User Ncm2PopupClose set completeopt=menuone
-  "augroup END
-
-  " parameter expansion for selected entry via Enter
-  "inoremap <silent> <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<CR>", 'n') : "\<CR>")
-
-  " cycle through completion entries with tab/shift+tab
-  "inoremap <expr> <TAB> pumvisible() ? "\<c-n>" : "\<TAB>"
-  "inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<TAB>"
-
-  "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
   " UltiSnip
   let g:UltiSnipsExpandTrigger = "<M-o>"
   let g:UltiSnipsJumpForwardTrigger = "<M-o>"
   let g:UltiSnipsJumpBackwardTrigger = "<M-p>"
-
-  " PHP7
-  let g:ultisnips_php_scalar_types = 1
 
   " This slows down Nvim a lot
   let g:vue_disable_pre_processors=1
@@ -386,19 +322,18 @@ nnoremap <silent><ESC> :nohlsearch<CR>
 
 
 " AUTO CMD
+augroup AUTOCMD
+  " Save ctags when saving php files
+  au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
 
-" Save ctags when saving php files
-au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
+  " crontab filetype tweak (the way vim normally saves files confuses crontab
+  " so this workaround allows for editing
+  au FileType crontab setlocal bkc=yes
 
-" crontab filetype tweak (the way vim normally saves files confuses crontab
-" so this workaround allows for editing
-au FileType crontab setlocal bkc=yes
+  au FileType markdown setlocal conceallevel=0
 
-au FileType markdown setlocal conceallevel=0
+  au FileType vue,javascript,php setlocal shiftwidth=2
+  au FileType vue,javascript,php setlocal tabstop=2
 
-au FileType vue,javascript,php setlocal shiftwidth=2
-au FileType vue,javascript,php setlocal tabstop=2
-
-au FileType vu syntax sync fromstart
-
-"augroup languageClient | au! CompleteDone | augroup END
+  au FileType vu syntax sync fromstart
+augroup END
