@@ -1,0 +1,20 @@
+session_name: FITNESSITALY
+start_directory: /home/giacomo/Documents/Lavoro/FitnessItaly
+windows:
+  - window_name: Code
+    panes:
+      - shell_command:
+        - cd application/
+        - vim
+  - window_name: Server
+    panes:
+      - shell_command:
+        - clear
+  - window_name: Docker
+    panes:
+      - shell_command:
+        - dc up -d --build
+  - window_name: Git
+    panes:
+      - shell_command:
+        - git status
