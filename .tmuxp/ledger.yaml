@@ -1,5 +1,5 @@
 session_name: LEDGER
-start_directory: ./
+start_directory: ~/Documents/accounting
 windows:
   - window_name: Postings
     panes:

@@ -1,25 +1,29 @@
-session_name: BPER
-start_directory: ~/Documents/Lavoro/Digital74/BPER
+session_name: ELAN
+start_directory: ~/Documents/Lavoro/Digital74/ELAN
 windows:
-  - window_name: FrontEnd
+  - window_name: Mobile
     panes:
       - shell_command:
         - cd client/
         - vim
+  - window_name: FrontEnd
+    panes:
+      - shell_command:
+        - clear
   - window_name: BackEnd
     panes:
       - shell_command:
-        - cd server/
-        - vim
+        - clear
   - window_name: Server
     panes:
       - shell_command:
-        - cd client
-        - npm start
+        - cd mobile
+        - ionic serve --devapp
   - window_name: Logs
     panes:
       - shell_command:
-        - tail -f server/storage/logs/laravel.log
+        # - tail -f server/storage/logs/laravel.log
+        - clear
   - window_name: Git
     panes:
       - shell_command:
@@ -27,9 +31,8 @@ windows:
   - window_name: Tinker
     panes:
       - shell_command:
-        - dc run test php artisan tinker
+        - clear
   - window_name: Docker
     panes:
       - shell_command:
-        - dc -f ../mysql-docker/docker-compose.yml up -d
-        - dc up -d
+        - clear

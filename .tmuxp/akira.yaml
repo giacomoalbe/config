@@ -1,5 +1,5 @@
 session_name: AKIRA
-start_directory: ./
+start_directory: ~/Documents/Software/ElementaryOS/akira
 windows:
   - window_name: Code
     panes:
@@ -21,7 +21,7 @@ windows:
       - shell_command:
         - gs
   - window_name: DevilsPie
-    panes
+    panes:
       - shell_command:
         - export AKIRA_WORKSPACE=3
         - devilspie2
