@@ -50,7 +50,7 @@ call plug#begin()
   Plug 'posva/vim-vue'
   Plug 'gregsexton/MatchTag'           " Show matching html tag
 
-" File Specific
+  " File Specific
   Plug 'pangloss/vim-javascript'
   Plug 'ekalinin/Dockerfile.vim'
   Plug 'Yggdroot/indentLine'           " highlighting 4sp indenting
@@ -60,18 +60,19 @@ call plug#begin()
   Plug 'chr4/nginx.vim'                " Nginx Syntax Highlighting
   Plug 'lepture/vim-jinja'             " Syntax plugin for Jinja template
   Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+  Plug '2072/PHP-Indenting-for-VIm'    " PHP indent script
 
-" Code Analysis and Completion
+  " Code Analysis and Completion
   Plug 'StanAngeloff/php.vim', {'for': 'php'}
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 
-" Other Features
+  " Other Features
   Plug 'editorconfig/editorconfig-vim' " editorconfig support
 
-call plug#end()
+  call plug#end()
 
-" Fundamental settings
+  " Fundamental settings
   set encoding=utf-8           " encoding is utf 8
   set fileencoding=utf-8
   set fileencodings=ucs-bom,utf-8,gbk,cp936,latin-1
@@ -82,7 +83,7 @@ call plug#end()
   filetype plugin indent on
   syntax on
 
-" Some useful settings
+  " Some useful settings
   set smartindent
   set expandtab                " tab to spaces
   set tabstop=2                " the width of a tab
@@ -96,7 +97,7 @@ call plug#end()
   set mouse=a mousemodel=popup " enable mouse support
   set wildmenu                 " Show the choices when inserting commands
 
-" Lookings
+  " Lookings
   set number                   " line number
   set numberwidth=5
   set relativenumber           " Sets relative line numbers in normal mode, absolute line numbers in insert
@@ -118,165 +119,165 @@ call plug#end()
   set splitright
   set nolazyredraw             " No lazy redraw for redraw bug
 
-" AIRLINE
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
-let g:airline_theme= 'gruvbox'
+  " AIRLINE
+  let g:airline_left_sep = ' '
+  let g:airline_left_alt_sep = '|'
+  let g:airline_right_sep = ' '
+  let g:airline_right_alt_sep = '|'
+  let g:airline_theme= 'gruvbox'
 
-let g:airline_powerline_fonts = 1
+  let g:airline_powerline_fonts = 1
 
-if !exists('g:airline_symbols')
+  if !exists('g:airline_symbols')
     let g:airline_symbols = {}
-endif
+  endif
 
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
 
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+  " airline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
 
-" NERDTREE
-nnoremap <leader>f :NERDTreeToggle<CR>
+  " NERDTREE
+  nnoremap <leader>f :NERDTreeToggle<CR>
 
-let NERDTreeQuitOnOpen = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+  let NERDTreeQuitOnOpen = 1
+  let NERDTreeAutoDeleteBuffer = 1
+  let NERDTreeMinimalUI = 1
+  let NERDTreeDirArrows = 1
 
-let NERDTreeMapOpenSplit='I'
-let NERDTreeMapActivateNode='l'
+  let NERDTreeMapOpenSplit='I'
+  let NERDTreeMapActivateNode='l'
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+  " For conceal markers.
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
 
-" MAPPINGS
-" select all mapping
-noremap <leader>a ggVG
+  " MAPPINGS
+  " select all mapping
+  noremap <leader>a ggVG
 
-" allow Tab and Shift+Tab to
-" tab  selection in visual mode
-vmap <Tab> >gv
-vmap <S-Tab> <gv
+  " allow Tab and Shift+Tab to
+  " tab  selection in visual mode
+  vmap <Tab> >gv
+  vmap <S-Tab> <gv
 
-" most of the time I should use ` instead of ' but typing it with my keyabord
-" is a pain, so just toggle them
-nnoremap ' `
-nnoremap ` '
+  " most of the time I should use ` instead of ' but typing it with my keyabord
+  " is a pain, so just toggle them
+  nnoremap ' `
+  nnoremap ` '
 
-" Space in normal mode for code folding
-nnoremap <space> za
+  " Space in normal mode for code folding
+  nnoremap <space> za
 
-" Reimplement i behaviuor
-nnoremap I i
+  " Reimplement i behaviuor
+  nnoremap I i
 
-" Go To Previus/Next Location of pointer
-" Next
-nnoremap <C-n> <C-i>
-" Previus
-nnoremap <C-p> <C-o>
+  " Go To Previus/Next Location of pointer
+  " Next
+  nnoremap <C-n> <C-i>
+  " Previus
+  nnoremap <C-p> <C-o>
 
-" Disable arrow keys during insert mode
-inoremap OB <nop>
-inoremap OD <nop>
-inoremap OC <nop>
-inoremap OA <nop>
+  " Disable arrow keys during insert mode
+  inoremap OB <nop>
+  inoremap OD <nop>
+  inoremap OC <nop>
+  inoremap OA <nop>
 
-" New Mapping for Arrow Keys
-nnoremap j h
-nnoremap k gj
-nnoremap i gk
-nnoremap l l
+  " New Mapping for Arrow Keys
+  nnoremap j h
+  nnoremap k gj
+  nnoremap i gk
+  nnoremap l l
 
-vnoremap j h
-vnoremap k gj
-vnoremap i gk
-vnoremap l l
+  vnoremap j h
+  vnoremap k gj
+  vnoremap i gk
+  vnoremap l l
 
-nnoremap <M-l>  gt
-nnoremap <M-j>  gT
+  nnoremap <M-l>  gt
+  nnoremap <M-j>  gT
 
-" Navigation through PANES
-nnoremap <C-j> <C-W><C-H>
-nnoremap <C-i> <C-W><C-K>
-nnoremap <C-k> <C-W><C-J>
-nnoremap <C-l> <C-W><C-L>
+  " Navigation through PANES
+  nnoremap <C-j> <C-W><C-H>
+  nnoremap <C-i> <C-W><C-K>
+  nnoremap <C-k> <C-W><C-J>
+  nnoremap <C-l> <C-W><C-L>
 
-" Change . to : in command mode
-nnoremap . :
+  " Change . to : in command mode
+  nnoremap . :
 
-" Remap . behaviour
-nnoremap - .
+  " Remap . behaviour
+  nnoremap - .
 
-" Make uppercase
-nnoremap mu <esc>viwUviw<esc>
-inoremap <c-U> <esc>viwUea
+  " Make uppercase
+  nnoremap mu <esc>viwUviw<esc>
+  inoremap <c-U> <esc>viwUea
 
-" Replace work with yanked one
-nnoremap riw viwp
+  " Replace work with yanked one
+  nnoremap riw viwp
 
-" Fast movement through text
-nnoremap <M-i> 10gk
-nnoremap <M-k> 10gj
+  " Fast movement through text
+  nnoremap <M-i> 10gk
+  nnoremap <M-k> 10gj
 
-" Fast movement through text
-vnoremap <M-i> 10gk
-vnoremap <M-k> 10gj
+  " Fast movement through text
+  vnoremap <M-i> 10gk
+  vnoremap <M-k> 10gj
 
-nnoremap rl g$
-nnoremap rj g^
+  nnoremap rl g$
+  nnoremap rj g^
 
-inoremap <M-.> >
-inoremap <M-,> <
+  inoremap <M-.> >
+  inoremap <M-,> <
 
-" Remap jk to ESC
-vnoremap jk <esc>
-inoremap jk <esc>
+  " Remap jk to ESC
+  vnoremap jk <esc>
+  inoremap jk <esc>
 
-let mapleader = ","
+  let mapleader = ","
 
-" Simply edit and source this config file
-nnoremap <leader>ev :tabe $MYVIMRC<CR>
-nnoremap <leader>sv :so $MYVIMRC<CR>
+  " Simply edit and source this config file
+  nnoremap <leader>ev :tabe $MYVIMRC<CR>
+  nnoremap <leader>sv :so $MYVIMRC<CR>
 
-"Reformat file content
-nnoremap <leader>if gg=G
+  "Reformat file content
+  nnoremap <leader>if gg=G
 
-" Easily open file in split and tabs and search for them
-nnoremap <leader>ep :Files<CR>
-nnoremap <leader>v :vsp<CR>:Files<CR>
-nnoremap <leader>h :split<CR>:Files<CR>
-nnoremap <leader>t :tabe<CR>:Files<CR>
+  " Easily open file in split and tabs and search for them
+  nnoremap <leader>ep :Files<CR>
+  nnoremap <leader>v :vsp<CR>:Files<CR>
+  nnoremap <leader>h :split<CR>:Files<CR>
+  nnoremap <leader>t :tabe<CR>:Files<CR>
 
-" Reload syntax from start
-nnoremap <leader>s :syntax sync fromstart<CR>
+  " Reload syntax from start
+  nnoremap <leader>s :syntax sync fromstart<CR>
 
-" Remove search results
-nnoremap <silent><ESC> :nohlsearch<CR>
+  " Remove search results
+  nnoremap <silent><ESC> :nohlsearch<CR>
 
-"####################
-" Plugins Settings  "
-"####################
+  "####################
+  " Plugins Settings  "
+  "####################
   " COC
   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -296,9 +297,16 @@ nnoremap <silent><ESC> :nohlsearch<CR>
   let g:ale_list_window_size = 5
 
   let g:ale_fixers = {
-    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \ 'javascript': ['eslint'],
+        \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+        \ 'javascript': ['eslint'],
+        \}
+
+  let g:ale_linters = {
+  \   'php': ['php'],
   \}
+
+  let g:ale_lint_on_save = 1
+  let g:ale_lint_on_text_changed = 0
 
   let g:ale_fix_on_save = 1
 
@@ -321,19 +329,19 @@ nnoremap <silent><ESC> :nohlsearch<CR>
   let g:user_emmet_mode='a'
 
 
-" AUTO CMD
-augroup AUTOCMD
-  " Save ctags when saving php files
-  au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
+  " AUTO CMD
+  augroup AUTOCMD
+    " Save ctags when saving php files
+    au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
 
-  " crontab filetype tweak (the way vim normally saves files confuses crontab
-  " so this workaround allows for editing
-  au FileType crontab setlocal bkc=yes
+    " crontab filetype tweak (the way vim normally saves files confuses crontab
+    " so this workaround allows for editing
+    au FileType crontab setlocal bkc=yes
 
-  au FileType markdown setlocal conceallevel=0
+    au FileType markdown setlocal conceallevel=0
 
-  au FileType vue,javascript,php setlocal shiftwidth=2
-  au FileType vue,javascript,php setlocal tabstop=2
+    au FileType vue,javascript,php setlocal shiftwidth=2
+    au FileType vue,javascript,php setlocal tabstop=2
 
-  au FileType vu syntax sync fromstart
-augroup END
+    au FileType vu syntax sync fromstart
+  augroup END
