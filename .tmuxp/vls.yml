@@ -1,0 +1,15 @@
+session_name: VLS
+start_directory: ~/Documents/Software/gtk/vala-language-server
+windows:
+  - window_name: Code
+    panes:
+      - shell_command:
+        - vim
+  - window_name: Meson
+    panes:
+      - shell_command:
+        - ninja -C build
+  - window_name: Git
+    panes:
+      - shell_command:
+        - git status
