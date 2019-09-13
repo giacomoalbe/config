@@ -124,6 +124,7 @@ PATH=$PATH:/home/giacomo/apps/mongodb/bin
 PATH=$PATH:/home/giacomo/.local/bin
 PATH=$PATH:/home/giacomo/.npm/bin
 PATH=$PATH:/home/giacomo/.cargo/bin
+PATH=$PATH:/home/giacomo/.config/composer/vendor/bin
 
 export LD_LIBRARY_PATH=/usr/local/lib
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.5/site-packages
@@ -135,7 +136,7 @@ alias g=git
 alias d=docker
 alias t=tmux
 alias vim=nvim
-alias cc=clear
+alias cl=clear
 alias ev="vim ~/.bashrc"
 alias sv="source ~/.bashrc"
 
@@ -196,8 +197,11 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools/bin
 export PATH=$PATH:$ANDROID_HOME/build-tools/25.0.2/
 
+# Fixes sdkmanager error with java versions higher than java 8
+#export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+
 # JAVA
-export JAVA_HOME=/usr/lib/jvm/default
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 
 # FLUTTER
@@ -216,6 +220,11 @@ export PATH=$PATH:/opt/lampp
 
 # Change default pager
 export PAGER="most"
+
+# Resolve
+export PATH=$PATH:/opt/resolve/bin
+
+export EDITOR="nvim"
 
 # Create config alias for git versioning of .config folder
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
@@ -237,10 +246,5 @@ if [ -f /home/giacomo/.tnsrc ]; then
     source /home/giacomo/.tnsrc
 fi
 ###-tns-completion-end-###
-
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. /usr/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
