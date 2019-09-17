@@ -124,6 +124,7 @@ PATH=$PATH:/home/giacomo/apps/mongodb/bin
 PATH=$PATH:/home/giacomo/.local/bin
 PATH=$PATH:/home/giacomo/.npm/bin
 PATH=$PATH:/home/giacomo/.cargo/bin
+PATH=$PATH:/snap/bin
 
 export LD_LIBRARY_PATH=/usr/local/lib
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.5/site-packages
@@ -186,6 +187,9 @@ fi
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+# RLS
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
 # NPM
 export PATH=~/.npm-global/bin:$PATH
 
@@ -197,7 +201,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools/bin
 export PATH=$PATH:$ANDROID_HOME/build-tools/25.0.2/
 
 # JAVA
-export JAVA_HOME=/usr/lib/jvm/default
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 
 # FLUTTER

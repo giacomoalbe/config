@@ -1,5 +1,5 @@
 session_name: AKIRA
-start_directory: ~/Documents/Software/ElementaryOS/akira
+start_directory: ~/Documents/Software/projects/akira
 windows:
   - window_name: Code
     panes:
