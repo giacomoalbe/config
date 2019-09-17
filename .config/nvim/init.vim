@@ -1,122 +1,124 @@
 " Install Vim-Plug if not present
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd!
-    autocmd VimEnter * PlugInstall
+  autocmd!
+  autocmd VimEnter * PlugInstall
 endif
 
 call plug#begin()
 " Logging
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'ianks/gruvbox'
-  Plug 'iCyMind/NeoSolarized'
-  Plug 'flazz/vim-colorschemes'
-  Plug 'sickill/vim-monokai'
-  Plug 'altercation/vim-colors-solarized'
-  Plug 'chriskempson/base16-vim'       " high quality colorschemes
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'ianks/gruvbox'
+Plug 'iCyMind/NeoSolarized'
+Plug 'flazz/vim-colorschemes'
+Plug 'sickill/vim-monokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'       " high quality colorschemes
 
 " Completion/Templating
-  Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " Command extention
-  Plug 'easymotion/vim-easymotion'
-  Plug 'wellle/targets.vim'
-  Plug 'tpope/vim-surround'
-  Plug 'junegunn/vim-easy-align'
-  Plug 'wellle/targets.vim'
-  Plug 'tpope/vim-repeat'
+Plug 'easymotion/vim-easymotion'
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align'
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-repeat'
 
 " Utils
-  Plug 'w0rp/ale'                      " Linting and error checking
-  Plug 'SirVer/ultisnips'              " Definitive Snippets
-  Plug 'phux/vim-snippets'             " Snippets collections
-  Plug 'chrisbra/Colorizer'            " colorize colors
-  Plug 'mhinz/vim-signify'             " show VCS changes
-  Plug 'mileszs/ack.vim'               " ack/rg support
-  Plug 'igankevich/mesonic'            " Meson Plugin for Vim
-  Plug 'jremmen/vim-ripgrep'           " Add rg search
+Plug 'w0rp/ale'                      " Linting and error checking
+Plug 'SirVer/ultisnips'              " Definitive Snippets
+Plug 'phux/vim-snippets'             " Snippets collections
+Plug 'chrisbra/Colorizer'            " colorize colors
+Plug 'mhinz/vim-signify'             " show VCS changes
+Plug 'mileszs/ack.vim'               " ack/rg support
+Plug 'igankevich/mesonic'            " Meson Plugin for Vim
+Plug 'jremmen/vim-ripgrep'           " Add rg search
+Plug 'mrk21/yaml-vim'                " YAML formatting plugin
+Plug 'sbdchd/neoformat'
 
 " Navigation
-  Plug 'scrooloose/nerdtree'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-  Plug 'gcmt/taboo.vim'
-  Plug 'tpope/vim-obsession'
-  Plug 'mattn/emmet-vim'
-  Plug 'posva/vim-vue'
-  Plug 'gregsexton/MatchTag'           " Show matching html tag
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'gcmt/taboo.vim'
+Plug 'tpope/vim-obsession'
+Plug 'mattn/emmet-vim'
+Plug 'posva/vim-vue'
+Plug 'gregsexton/MatchTag'           " Show matching html tag
 
 " File Specific
-  Plug 'pangloss/vim-javascript'
-  Plug 'ekalinin/Dockerfile.vim'
-  Plug 'Yggdroot/indentLine'           " highlighting 4sp indenting
-  Plug 'sheerun/vim-polyglot'          " newer language support
-  Plug 'reisub0/hot-reload.vim'        " Hot reload for Flutter
-  Plug 'dart-lang/dart-vim-plugin'     " Dart Syntax Highlight & Commands
-  Plug 'chr4/nginx.vim'                " Nginx Syntax Highlighting
-  Plug 'lepture/vim-jinja'             " Syntax plugin for Jinja template
-  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'pangloss/vim-javascript'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'Yggdroot/indentLine'           " highlighting 4sp indenting
+Plug 'sheerun/vim-polyglot'          " newer language support
+Plug 'reisub0/hot-reload.vim'        " Hot reload for Flutter
+Plug 'dart-lang/dart-vim-plugin'     " Dart Syntax Highlight & Commands
+Plug 'chr4/nginx.vim'                " Nginx Syntax Highlighting
+Plug 'lepture/vim-jinja'             " Syntax plugin for Jinja template
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 " Code Analysis and Completion
-  Plug 'StanAngeloff/php.vim', {'for': 'php'}
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 " Other Features
-  Plug 'editorconfig/editorconfig-vim' " editorconfig support
+Plug 'editorconfig/editorconfig-vim' " editorconfig support
 
 call plug#end()
 
 " Fundamental settings
-  set encoding=utf-8           " encoding is utf 8
-  set fileencoding=utf-8
-  set fileencodings=ucs-bom,utf-8,gbk,cp936,latin-1
-  set fileformat=unix
-  set fileformats=unix,dos,mac
-  filetype on
-  filetype plugin on
-  filetype plugin indent on
-  syntax on
+let g:loaded_matchparen = 1
+set encoding=utf-8           " encoding is utf 8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,gbk,cp936,latin-1
+set fileformat=unix
+set fileformats=unix,dos,mac
+filetype on
+filetype plugin on
+filetype plugin indent on
+syntax on
 
 " Some useful settings
-  set smartindent
-  set expandtab                " tab to spaces
-  set tabstop=2                " the width of a tab
-  set shiftwidth=2             " the width for indent
-  set foldenable               " enable folding
-  set foldmethod=indent        " folding by indent
-  set foldlevel=99
-  set ignorecase               " ignore the case when search texts
-  set smartcase                " if searching text contains uppercase case will not be ignored
-  set clipboard+=unnamedplus   " Copies using system clipboard
-  set mouse=a mousemodel=popup " enable mouse support
-  set wildmenu                 " Show the choices when inserting commands
+set smartindent
+set expandtab                " tab to spaces
+set tabstop=2                " the width of a tab
+set shiftwidth=2             " the width for indent
+set foldenable               " enable folding
+set foldmethod=indent        " folding by indent
+set foldlevel=99
+set ignorecase               " ignore the case when search texts
+set smartcase                " if searching text contains uppercase case will not be ignored
+set clipboard+=unnamedplus   " Copies using system clipboard
+set mouse=a mousemodel=popup " enable mouse support
+set wildmenu                 " Show the choices when inserting commands
+set lazyredraw
 
 " Lookings
-  set number                   " line number
-  set numberwidth=5
-  set relativenumber           " Sets relative line numbers in normal mode, absolute line numbers in insert
-  set cursorline               " hilight the line of the cursor
-  set ruler
-  "set cursorcolumn             " hilight the column of the cursor
-  set nowrap                   " no line wrapping
-  "colorscheme gruvbox          " use the theme gruvbox
-  colorscheme wombat256mod
-  set background=dark          " use the light version of gruvbox
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  set showmatch                " Show matching parentesis
-  set autoread                 " Reload changed  files
-  set nobackup                 " remove the .ext~ files, but not the swapfiles
-  set writebackup
-  set noswapfile
-  set grepprg=rg\ --vimgrep    " use ripgreg instead of grep
-  set splitbelow               " Set the correct position of splitting
-  set splitright
-  set nolazyredraw             " No lazy redraw for redraw bug
+set number                   " line number
+set numberwidth=5
+"set relativenumber           " Sets relative line numbers in normal mode, absolute line numbers in insert
+"set cursorline               " hilight the line of the cursor
+set ruler
+"set cursorcolumn             " hilight the column of the cursor
+set nowrap                   " no line wrapping
+"colorscheme gruvbox          " use the theme gruvbox
+colorscheme wombat256mod
+set background=dark          " use the light version of gruvbox
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set showmatch                " Show matching parentesis
+set autoread                 " Reload changed  files
+set nobackup                 " remove the .ext~ files, but not the swapfiles
+set writebackup
+set noswapfile
+set grepprg=rg\ --vimgrep    " use ripgreg instead of grep
+set splitbelow               " Set the correct position of splitting
+set splitright
 
 " AIRLINE
 let g:airline_left_sep = ' '
@@ -128,7 +130,7 @@ let g:airline_theme= 'gruvbox'
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
 " unicode symbols
@@ -277,63 +279,84 @@ nnoremap <silent><ESC> :nohlsearch<CR>
 "####################
 " Plugins Settings  "
 "####################
-  " COC
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" COC
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-  "let g:coc_snippet_next = '<TAB>'
-  "let g:coc_snippet_prev = '<S-TAB>'
+"let g:coc_snippet_next = '<TAB>'
+"let g:coc_snippet_prev = '<S-TAB>'
 
-  " ALE
-  " disable linting while typing
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_enter = 0
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  let g:ale_open_list = 1
-  let g:ale_keep_list_window_open=0
-  let g:ale_set_quickfix=0
-  let g:ale_list_window_size = 5
 
-  let g:ale_fixers = {
-    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \ 'javascript': ['eslint'],
-  \}
 
-  let g:ale_fix_on_save = 1
+" ALE
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open=0
+let g:ale_set_quickfix=0
+let g:ale_list_window_size = 5
 
-  " indentline
-  let g:indentLine_setConceal = 0
-  let g:indentLine_fileTypeExclude = ['json', 'markdown']
+let g:ale_php_phpcbf_standard='1TBS'
+"let g:ale_php_phpcbf_standard= 'PSR2'
+"let g:ale_php_phpcs_standard='phpcs.xml.dist'
+"let g:ale_php_phpmd_ruleset='phpmd.xml'
 
-  " UltiSnip
-  let g:UltiSnipsExpandTrigger = "<M-o>"
-  let g:UltiSnipsJumpForwardTrigger = "<M-o>"
-  let g:UltiSnipsJumpBackwardTrigger = "<M-p>"
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
-  " This slows down Nvim a lot
-  let g:vue_disable_pre_processors=1
+let g:ale_linters_explicit = 1
 
-  " New Leader key for Emmet
-  let g:user_emmet_leader_key='<C-Z>'
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'javascript': ['eslint'],
+      \ 'vue': ['eslint'],
+      \}
 
-  " enable all function in all mode
-  let g:user_emmet_mode='a'
+let g:ale_linters = {
+      \ 'php': ['php', 'psalm'],
+      \ 'javascript': ['eslint'],
+      \ 'vue': ['eslint'],
+      \}
+
+let g:ale_fix_on_save = 1
+
+" indentline
+let g:indentLine_setConceal = 0
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
+
+" UltiSnip
+let g:UltiSnipsExpandTrigger = "<M-o>"
+let g:UltiSnipsJumpForwardTrigger = "<M-o>"
+let g:UltiSnipsJumpBackwardTrigger = "<M-p>"
+
+" This slows down Nvim a lot
+let g:vue_disable_pre_processors=1
+
+" New Leader key for Emmet
+let g:user_emmet_leader_key='<C-Z>'
+
+" enable all function in all mode
+let g:user_emmet_mode='a'
 
 
 " AUTO CMD
 augroup AUTOCMD
-  " Save ctags when saving php files
-  au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
-
   " crontab filetype tweak (the way vim normally saves files confuses crontab
   " so this workaround allows for editing
   au FileType crontab setlocal bkc=yes
 
   au FileType markdown setlocal conceallevel=0
 
-  au FileType vue,javascript,php setlocal shiftwidth=2
-  au FileType vue,javascript,php setlocal tabstop=2
+  au FileType vue,javascript setlocal shiftwidth=2
+  au FileType vue,javascript setlocal tabstop=2
 
   au FileType vu syntax sync fromstart
+
+  " add yaml stuffs
+  au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 augroup END

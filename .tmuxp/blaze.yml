@@ -1,0 +1,16 @@
+session_name: BLAZE
+start_directory: ~/Documents/Software/gtk/blaze
+windows:
+  - window_name: Code
+    panes:
+      - shell_command:
+        - cd src/
+        - vim
+  - window_name: Meson
+    panes:
+      - shell_command:
+        - ninja -C build
+  - window_name: Git
+    panes:
+      - shell_command:
+        - git status
