@@ -27,9 +27,8 @@ windows:
   - window_name: Tinker
     panes:
       - shell_command:
-        - dc run test php artisan tinker
+        - dc run server php artisan tinker
   - window_name: Docker
     panes:
       - shell_command:
-        - dc -f ../mysql-docker/docker-compose.yml up -d
-        - dc up -d
+        - ./start-dev.sh
