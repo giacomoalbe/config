@@ -262,6 +262,33 @@ inoremap jk <esc>
 
 let mapleader = ","
 
+" ####################
+"     COC MAPPINGS
+" ####################
+
+"Easily restart CoC for LSP development
+nnoremap <leader>cr :CocRestart<CR>
+nnoremap <leader>cl :CocCommand workspace.showOutput
+
+" Refresh completion results
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" GoTo Mappings
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+
+" Show all diagnostics
+nnoremap <silent> <leader>w  :<C-u>CocList diagnostics<cr>
+
+" Show all simbols
+nnoremap <silent> <leader>l  :<C-u>CocList outline<cr>
+
+" Go to previousely opened file in current buffer
+nnoremap <leader>fb <C-^>
+
+
 " Simply edit and source this config file
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>

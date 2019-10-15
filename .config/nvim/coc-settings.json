@@ -11,7 +11,8 @@
       }
     },
     "vala-language-server": {
-      "command": "vala-language-server",
+      "command": "~/Documents/Software/gtk/vala-language-server/build/vala-language-server",
+      "css.execArgv": ["--nolazy", "--inspect-brk=6045"],
       "filetypes": ["vala"],
       "args": ["--pkg=posix", "--enable-gobject-tracing", "--fatal-warnings"]
     },
