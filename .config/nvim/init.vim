@@ -41,6 +41,11 @@ Plug 'igankevich/mesonic'            " Meson Plugin for Vim
 Plug 'jremmen/vim-ripgrep'           " Add rg search
 Plug 'mrk21/yaml-vim'                " YAML formatting plugin
 Plug 'sbdchd/neoformat'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'ararslan/license-to-vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
@@ -66,11 +71,14 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Code Analysis and Completion
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " Other Features
 Plug 'editorconfig/editorconfig-vim' " editorconfig support
 
 call plug#end()
+
+call glaive#Install()
 
 " Fundamental settings
 let g:loaded_matchparen = 1
@@ -199,10 +207,10 @@ nnoremap <C-n> <C-i>
 nnoremap <C-p> <C-o>
 
 " Disable arrow keys during insert mode
-inoremap OB <nop>
-inoremap OD <nop>
-inoremap OC <nop>
-inoremap OA <nop>
+"inoremap OB <nop>
+"inoremap OD <nop>
+"inoremap OC <nop>
+"inoremap OA <nop>
 
 " New Mapping for Arrow Keys
 nnoremap j h
@@ -289,7 +297,7 @@ nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
 "Reformat file content
-nnoremap <leader>if gg=G
+nnoremap <leader>if :FormatCode<CR>
 
 " Easily open file in split and tabs and search for them
 nnoremap <leader>ep :Files<CR>
@@ -369,6 +377,12 @@ let g:user_emmet_leader_key='<C-Z>'
 " enable all function in all mode
 let g:user_emmet_mode='a'
 
+" License-to-vim
+let g:license_author = 'Giacomo Alberini'
+let g:license_email = 'giacomoalbe@gmail.com'
+
+" Python Neovim Integration
+let g:python3_host_prog = '/home/giacomo/.pyenv/versions/neovim3/bin/python'
 
 " AUTO CMD
 augroup AUTOCMD
@@ -386,4 +400,18 @@ augroup AUTOCMD
   " add yaml stuffs
   au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
+
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType vue AutoFormatBuffer prettier
 augroup END

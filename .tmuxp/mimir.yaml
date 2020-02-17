@@ -1,0 +1,31 @@
+session_name: MIMIR
+suppress_history: false
+start_directory: ~/Documents/Lavoro/ReadyInformation/mimir
+windows:
+  - window_name: FrontEnd
+    panes:
+      - shell_command:
+        - cd client/
+        - vim
+  - window_name: BackEnd
+    panes:
+      - shell_command:
+        - cd server/
+        - vim
+  - window_name: Server
+    layout: main-vertical
+    panes:
+      - dc logs -f server
+      - dc logs -f client
+  - window_name: Git
+    panes:
+      - shell_command:
+        - gs
+  - window_name: Bash
+    panes:
+      - ''
+  - window_name: Docker
+    focus: true
+    panes:
+      - shell_command:
+        - ./start-dev.sh

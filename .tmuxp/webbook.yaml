@@ -1,0 +1,17 @@
+session_name: WEBBOOK
+start_directory: ~/Documents/Lavoro/Corsi/intro-prog-web
+windows:
+  - window_name: Editor
+    panes:
+      - shell_command:
+        - cd src
+        - vim
+  - window_name: Mdbook
+    panes:
+      - shell_command:
+        - clear
+        - mdbook serve
+  - window_name: Deploy
+    panes:
+      - shell_command:
+        - git status

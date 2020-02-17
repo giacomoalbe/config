@@ -1,0 +1,20 @@
+session_name: LOVEBUGS
+start_directory: ~/Documents/Software/projects/lovebugs
+windows:
+  - window_name: Code
+    panes:
+      - shell_command:
+        - cd lib/
+        - vim
+  - window_name: HotReload
+    panes:
+      - shell_command:
+        - flutter run
+  - window_name: Git
+    panes:
+      - shell_command:
+        - git status
+  - window_name: Emulator
+    panes:
+      - shell_command:
+        - emulator -avd Nexus6

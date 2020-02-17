@@ -160,7 +160,7 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit -m"
 alias gl="git log --pretty=format:'%ad [%an] | %s' --date=format:'%d/%m/%y %H:%M'"
-alias glh="git log --pretty=format:'%ad [%an] | %s' --date=format:'%d/%m/%y %H:%M' | head"
+alias glh="git --no-pager log --pretty=tformat:'%ad %C(Yellow)%h%C(reset) %C(blue)[%an]%C(reset) | %s' --date=format:'%d/%m/%y %H:%M' -10"
 alias glt="git log --pretty=format:'%h %ad | %s [%an]' --author=Giacomo  --date=format:\"%d/%m/%y %H:%M\" --since=\$(date +%Y-%m-%d) | tee"
 
 # Portusage
@@ -198,7 +198,7 @@ export PATH=~/.npm-global/bin:$PATH
 export ANDROID_HOME=~/.android-sdk
 export PATH=$PATH:$ANDROID_HOME/emulator/
 export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/build-tools/25.0.2/
 
 # Fixes sdkmanager error with java versions higher than java 8
@@ -218,12 +218,13 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # CUSTOM SCRIPT
 export PATH=~/.scripts:$PATH
+export PATH=~/bin:$PATH
 
 # XAMPP
 export PATH=$PATH:/opt/lampp
 
 # Change default pager
-export PAGER="most"
+#export PAGER="most"
 
 # Resolve
 export PATH=$PATH:/opt/resolve/bin
@@ -235,7 +236,16 @@ alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
 
 # Change default mapping for , and . to reproduce < and >
-#xmodmap ~/.Xmodmap
+if [ -f ~/.Xmodmap ];
+then
+  echo "Loading xmodmap"
+  xmodmap ~/.Xmodmap
+fi
+
+alias reloadkc="xmodmap ~/.Xmodmap"
+
+# Open Alias
+alias open="xdg-open"
 
 # pywal
 #setsid wal -i ~/Immagini/city_skyline.jpg
@@ -252,3 +262,16 @@ fi
 ###-tns-completion-end-###
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+unset PROMPT_COMMAND
+
+#eval "$(hub alias -s)"
+
+# PyEnv
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi

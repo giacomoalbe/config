@@ -13,8 +13,14 @@
     "vala-language-server": {
       "command": "~/Documents/Software/gtk/vala-language-server/build/vala-language-server",
       "css.execArgv": ["--nolazy", "--inspect-brk=6045"],
-      "filetypes": ["vala"],
+      "filetypes": [],
       "args": ["--pkg=posix", "--enable-gobject-tracing", "--fatal-warnings"]
+    },
+    "gvls": {
+      "command": "org.gnome.gvls.stdio.Server",
+      "filetypes": ["vala"],
+      "args": []
     }
-  }
+  },
+  "java.errors.incompleteClasspath.severity": "ignore"
 }
