@@ -223,8 +223,13 @@ vnoremap k gj
 vnoremap i gk
 vnoremap l l
 
+" Move between tabs
 nnoremap <M-l>  gt
 nnoremap <M-j>  gT
+
+" Move between tabs (on Mac)
+"nnoremap ì  gt
+"nnoremap ê  gT
 
 " Navigation through PANES
 nnoremap <C-j> <C-W><C-H>
@@ -249,9 +254,9 @@ nnoremap riw viwp
 nnoremap <M-i> 10gk
 nnoremap <M-k> 10gj
 
-" Fast movement through text
-vnoremap <M-i> 10gk
-vnoremap <M-k> 10gj
+" Fast movement through text (on Mac)
+nnoremap é 10gk
+nnoremap ë 10gj
 
 nnoremap rl g$
 nnoremap rj g^
