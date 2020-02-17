@@ -10,10 +10,9 @@
         }
       }
     },
-    "vala-language-server": {
+    "vls": {
       "command": "vala-language-server",
-      "filetypes": ["vala"],
-      "args": ["--pkg=posix", "--enable-gobject-tracing", "--fatal-warnings"]
+      "filetypes": ["vala"]
     }
   }
 }

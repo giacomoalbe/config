@@ -1,5 +1,5 @@
 session_name: AKIRA
-start_directory: ~/Documents/Software/ElementaryOS/akira
+start_directory: ~/Documents/Software/projects/akira
 windows:
   - window_name: Code
     panes:
@@ -9,9 +9,7 @@ windows:
   - window_name: Build
     panes:
       - shell_command:
-        - meson build --prefix=/usr
-        - cd build
-        - ninja
+          - find src/ -name *.vala | entr ../akira-run.sh
   - window_name: Log
     panes:
       - shell_command:
@@ -23,5 +21,5 @@ windows:
   - window_name: DevilsPie
     panes:
       - shell_command:
-        - export AKIRA_WORKSPACE=3
+        - export AKIRA_WORKSPACE=1
         - devilspie2
