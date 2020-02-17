@@ -10,9 +10,27 @@
         }
       }
     },
-    "vls": {
-      "command": "vala-language-server",
-      "filetypes": ["vala"]
+    "vala-language-server": {
+      "command": "~/Documents/Software/gtk/vala-language-server/build/vala-language-server",
+      "css.execArgv": ["--nolazy", "--inspect-brk=6045"],
+      "filetypes": [],
+      "args": ["--pkg=posix", "--enable-gobject-tracing", "--fatal-warnings"]
+    },
+    "gvls": {
+      "command": "org.gnome.gvls.stdio.Server",
+      "filetypes": ["vala"],
+      "args": []
+    },
+    "dart": {
+      "command": "dart",
+      "args": [
+        "/usr/local/Cellar/dart/2.5.0/libexec/bin/snapshots/analysis_server.dart.snapshot",
+        "--lsp"
+      ],
+      "filetypes": ["dart"],
+      "disableDynamicRegister":  true,
+      "java.errors.incompleteClasspath.severity": "ignore",
+      "trace.server": "verbose"
     }
   }
 }

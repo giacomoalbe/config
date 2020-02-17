@@ -1,0 +1,19 @@
+session_name: DREAMMATE
+start_directory: ~/Documents/Software/projects/dreammate
+windows:
+  - window_name: Code
+    panes:
+      - shell_command:
+        - vim
+  - window_name: Run
+    panes:
+      - shell_command:
+        - ./dreammate.yaml
+  - window_name: Git
+    panes:
+      - shell_command:
+        - gs
+  - window_name: Python
+    panes:
+      - shell_command:
+        - python3

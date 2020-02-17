@@ -1,5 +1,5 @@
-session_name: ISUP
-start_directory: ~/Documents/Lavoro/24Consulting/iSup_flutter
+session_name: LOVEBUGS
+start_directory: ~/Documents/Software/projects/lovebugs
 windows:
   - window_name: Code
     panes:

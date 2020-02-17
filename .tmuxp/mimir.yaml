@@ -1,5 +1,6 @@
-session_name: BPER
-start_directory: ~/Documents/Lavoro/Digital74/BPER
+session_name: MIMIR
+suppress_history: false
+start_directory: ~/Documents/Lavoro/ReadyInformation/mimir
 windows:
   - window_name: FrontEnd
     panes:
@@ -12,23 +13,19 @@ windows:
         - cd server/
         - vim
   - window_name: Server
+    layout: main-vertical
     panes:
-      - shell_command:
-        - cd client
-        - npm start
-  - window_name: Logs
-    panes:
-      - shell_command:
-        - tail -f server/storage/logs/laravel.log
+      - dc logs -f server
+      - dc logs -f client
   - window_name: Git
     panes:
       - shell_command:
         - gs
-  - window_name: Tinker
+  - window_name: Bash
     panes:
-      - shell_command:
-        - dc run server php artisan tinker
+      - ''
   - window_name: Docker
+    focus: true
     panes:
       - shell_command:
         - ./start-dev.sh

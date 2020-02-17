@@ -75,7 +75,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    #alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -124,6 +124,7 @@ PATH=$PATH:/home/giacomo/apps/mongodb/bin
 PATH=$PATH:/home/giacomo/.local/bin
 PATH=$PATH:/home/giacomo/.npm/bin
 PATH=$PATH:/home/giacomo/.cargo/bin
+PATH=$PATH:/snap/bin
 PATH=$PATH:/home/giacomo/.config/composer/vendor/bin
 
 export LD_LIBRARY_PATH=/usr/local/lib
@@ -151,15 +152,15 @@ alias l='ls -CF'
 
 alias pi="sudo pacman -S "
 
-cd() { builtin cd "$@" && ls -l --color; }
+cd() { builtin cd "$@" && ls -lG ; }
 
-alias ls="ls -h --color=auto"
+alias ls="ls -h"
 
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit -m"
 alias gl="git log --pretty=format:'%ad [%an] | %s' --date=format:'%d/%m/%y %H:%M'"
-alias glh="git log --pretty=format:'%ad [%an] | %s' --date=format:'%d/%m/%y %H:%M' | head"
+alias glh="git --no-pager log --pretty=tformat:'%ad %C(Yellow)%h%C(reset) %C(blue)[%an]%C(reset) | %s' --date=format:'%d/%m/%y %H:%M' -10"
 alias glt="git log --pretty=format:'%h %ad | %s [%an]' --author=Giacomo  --date=format:\"%d/%m/%y %H:%M\" --since=\$(date +%Y-%m-%d) | tee"
 
 # Portusage
@@ -187,15 +188,25 @@ fi
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+# RLS
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
 # NPM
 export PATH=~/.npm-global/bin:$PATH
 
 # ANDROID
 export ANDROID_HOME=~/.android-sdk
+<<<<<<< HEAD
 export PATH=$ANDROID_HOME/emulator/:$PATH
 export PATH=$ANDROID_HOME/tools/bin:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/build-tools/25.0.2/:$PATH
+=======
+export PATH=$PATH:$ANDROID_HOME/emulator/
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/build-tools/25.0.2/
+>>>>>>> 8208fd47592cd9c0b7614d422c123c9a8cc50b88
 
 # Fixes sdkmanager error with java versions higher than java 8
 #export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
@@ -214,12 +225,13 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # CUSTOM SCRIPT
 export PATH=~/.scripts:$PATH
+export PATH=~/bin:$PATH
 
 # XAMPP
 export PATH=$PATH:/opt/lampp
 
 # Change default pager
-export PAGER="most"
+#export PAGER="most"
 
 # Resolve
 export PATH=$PATH:/opt/resolve/bin
@@ -231,7 +243,16 @@ alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
 
 # Change default mapping for , and . to reproduce < and >
-#xmodmap ~/.Xmodmap
+if [ -f ~/.Xmodmap ];
+then
+  echo "Loading xmodmap"
+  xmodmap ~/.Xmodmap
+fi
+
+alias reloadkc="xmodmap ~/.Xmodmap"
+
+# Open Alias
+alias open="xdg-open"
 
 # pywal
 #setsid wal -i ~/Immagini/city_skyline.jpg
@@ -248,3 +269,16 @@ fi
 ###-tns-completion-end-###
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+unset PROMPT_COMMAND
+
+#eval "$(hub alias -s)"
+
+# PyEnv
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi

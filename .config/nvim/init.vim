@@ -42,6 +42,11 @@ Plug 'jremmen/vim-ripgrep'           " Add rg search
 Plug 'mrk21/yaml-vim'                " YAML formatting plugin
 Plug 'sbdchd/neoformat'
 Plug 'arrufat/vala.vim'              " Better Vala indentation & support for Vim
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'ararslan/license-to-vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
@@ -67,11 +72,14 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Code Analysis and Completion
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " Other Features
 Plug 'editorconfig/editorconfig-vim' " editorconfig support
 
 call plug#end()
+
+call glaive#Install()
 
 " Fundamental settings
 let g:loaded_matchparen = 1
@@ -200,10 +208,10 @@ nnoremap <C-n> <C-i>
 nnoremap <C-p> <C-o>
 
 " Disable arrow keys during insert mode
-inoremap OB <nop>
-inoremap OD <nop>
-inoremap OC <nop>
-inoremap OA <nop>
+"inoremap OB <nop>
+"inoremap OD <nop>
+"inoremap OC <nop>
+"inoremap OA <nop>
 
 " New Mapping for Arrow Keys
 nnoremap j h
@@ -216,8 +224,13 @@ vnoremap k gj
 vnoremap i gk
 vnoremap l l
 
+" Move between tabs
 nnoremap <M-l>  gt
 nnoremap <M-j>  gT
+
+" Move between tabs (on Mac)
+"nnoremap ì  gt
+"nnoremap ê  gT
 
 " Navigation through PANES
 nnoremap <C-j> <C-W><C-H>
@@ -242,9 +255,9 @@ nnoremap riw viwp
 nnoremap <M-i> 10gk
 nnoremap <M-k> 10gj
 
-" Fast movement through text
-vnoremap <M-i> 10gk
-vnoremap <M-k> 10gj
+" Fast movement through text (on Mac)
+nnoremap é 10gk
+nnoremap ë 10gj
 
 nnoremap rl g$
 nnoremap rj g^
@@ -258,12 +271,39 @@ inoremap jk <esc>
 
 let mapleader = ","
 
+" ####################
+"     COC MAPPINGS
+" ####################
+
+"Easily restart CoC for LSP development
+nnoremap <leader>cr :CocRestart<CR>
+nnoremap <leader>cl :CocCommand workspace.showOutput
+
+" Refresh completion results
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" GoTo Mappings
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+
+" Show all diagnostics
+nnoremap <silent> <leader>w  :<C-u>CocList diagnostics<cr>
+
+" Show all simbols
+nnoremap <silent> <leader>l  :<C-u>CocList outline<cr>
+
+" Go to previousely opened file in current buffer
+nnoremap <leader>fb <C-^>
+
+
 " Simply edit and source this config file
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
 "Reformat file content
-nnoremap <leader>if gg=G
+nnoremap <leader>if :FormatCode<CR>
 
 " Easily open file in split and tabs and search for them
 nnoremap <leader>ep :Files<CR>
@@ -288,7 +328,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 "let g:coc_snippet_next = '<TAB>'
 "let g:coc_snippet_prev = '<S-TAB>'
-
 
 
 " ALE
@@ -344,6 +383,12 @@ let g:user_emmet_leader_key='<C-Z>'
 " enable all function in all mode
 let g:user_emmet_mode='a'
 
+" License-to-vim
+let g:license_author = 'Giacomo Alberini'
+let g:license_email = 'giacomoalbe@gmail.com'
+
+" Python Neovim Integration
+let g:python3_host_prog = '/home/giacomo/.pyenv/versions/neovim3/bin/python'
 
 " AUTO CMD
 augroup AUTOCMD
@@ -361,4 +406,18 @@ augroup AUTOCMD
   " add yaml stuffs
   au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
+
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType vue AutoFormatBuffer prettier
 augroup END

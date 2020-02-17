@@ -9,7 +9,7 @@ windows:
   - window_name: Build
     panes:
       - shell_command:
-          - find src/ -name *.vala | entr ../akira-run.sh
+        - find src/ -name *.vala | entr -c ../akira-run.sh
   - window_name: Log
     panes:
       - shell_command:
