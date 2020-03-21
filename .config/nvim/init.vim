@@ -41,6 +41,7 @@ Plug 'igankevich/mesonic'            " Meson Plugin for Vim
 Plug 'jremmen/vim-ripgrep'           " Add rg search
 Plug 'mrk21/yaml-vim'                " YAML formatting plugin
 Plug 'sbdchd/neoformat'
+Plug 'arrufat/vala.vim'              " Better Vala indentation & support for Vim
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
@@ -321,14 +322,14 @@ nnoremap <silent><ESC> :nohlsearch<CR>
 "####################
 " Plugins Settings  "
 "####################
-" COC
+" Coc
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <c-space> coc#refresh()
 
 "let g:coc_snippet_next = '<TAB>'
 "let g:coc_snippet_prev = '<S-TAB>'
-
 
 
 " ALE

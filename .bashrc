@@ -196,10 +196,17 @@ export PATH=~/.npm-global/bin:$PATH
 
 # ANDROID
 export ANDROID_HOME=~/.android-sdk
+<<<<<<< HEAD
+export PATH=$ANDROID_HOME/emulator/:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/build-tools/25.0.2/:$PATH
+=======
 export PATH=$PATH:$ANDROID_HOME/emulator/
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/build-tools/25.0.2/
+>>>>>>> 8208fd47592cd9c0b7614d422c123c9a8cc50b88
 
 # Fixes sdkmanager error with java versions higher than java 8
 #export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
