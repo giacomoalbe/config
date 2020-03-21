@@ -46,6 +46,8 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'ararslan/license-to-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
+"Plug 'vim-vdebug/vdebug'
+Plug 'puremourning/vimspector'
 
 " Navigation
 Plug 'scrooloose/nerdtree'
@@ -64,7 +66,7 @@ Plug 'Yggdroot/indentLine'           " highlighting 4sp indenting
 Plug 'sheerun/vim-polyglot'          " newer language support
 Plug 'reisub0/hot-reload.vim'        " Hot reload for Flutter
 Plug 'dart-lang/dart-vim-plugin'     " Dart Syntax Highlight & Commands
-Plug 'chr4/nginx.vim'                " Nginx Syntax Highlighting
+"Plug 'chr4/nginx.vim'                " Nginx Syntax Highlighting
 Plug 'lepture/vim-jinja'             " Syntax plugin for Jinja template
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
@@ -114,7 +116,7 @@ set numberwidth=5
 "set cursorline               " hilight the line of the cursor
 set ruler
 "set cursorcolumn             " hilight the column of the cursor
-set nowrap                   " no line wrapping
+set wrap                    " line wrapping
 "colorscheme gruvbox          " use the theme gruvbox
 colorscheme wombat256mod
 set background=dark          " use the light version of gruvbox
@@ -372,6 +374,10 @@ let g:indentLine_fileTypeExclude = ['json', 'markdown']
 let g:UltiSnipsExpandTrigger = "<M-o>"
 let g:UltiSnipsJumpForwardTrigger = "<M-o>"
 let g:UltiSnipsJumpBackwardTrigger = "<M-p>"
+
+" Vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+"packadd! vimspector
 
 " This slows down Nvim a lot
 let g:vue_disable_pre_processors=1

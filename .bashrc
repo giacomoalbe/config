@@ -229,6 +229,9 @@ export PATH=$PATH:/opt/lampp
 # Resolve
 export PATH=$PATH:/opt/resolve/bin
 
+# GH
+export PATH=$PATH:/home/giacomo/Documents/Software/projects/gh/bin
+
 export EDITOR="nvim"
 
 # Create config alias for git versioning of .config folder
