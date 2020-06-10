@@ -84,14 +84,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -129,46 +121,6 @@ PATH=$PATH:/home/giacomo/.config/composer/vendor/bin
 
 export LD_LIBRARY_PATH=/usr/local/lib
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.5/site-packages
-
-alias dc=docker-compose
-alias dcp="docker-compose -f docker-compose.prod.yml"
-alias dl="docker-compose logs -f"
-alias g=git
-alias d=docker
-alias t=tmux
-alias vim=nvim
-alias cl=clear
-alias ev="vim ~/.bashrc"
-alias sv="source ~/.bashrc"
-
-alias tn="tmux new -s"
-alias ta="tmux attach -t"
-alias tk="tmux kill-session -t"
-alias tl="tmux ls"
-
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias pi="sudo pacman -S "
-
-cd() { builtin cd "$@" && ls -lG ; }
-
-alias ls="ls -h"
-
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit -m"
-alias gl="git log --pretty=format:'%ad [%an] | %s' --date=format:'%d/%m/%y %H:%M'"
-alias glh="git --no-pager log --pretty=tformat:'%ad %C(Yellow)%h%C(reset) %C(blue)[%an]%C(reset) | %s' --date=format:'%d/%m/%y %H:%M' -10"
-alias glt="git log --pretty=format:'%h %ad | %s [%an]' --author=Giacomo  --date=format:\"%d/%m/%y %H:%M\" --since=\$(date +%Y-%m-%d) | tee"
-
-# Portusage
-alias portusage="sudo netstat -tulpn"
-
-# HLedger
-alias hl="hledger"
-
 export PS1='\[\033[01;32m\]\u@\h \[\033[00;31m\]\W \$ \[\033[00m\]'
 
 function queryfont {
@@ -187,76 +139,31 @@ fi
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
-# RLS
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-
-# NPM
 export PATH=~/.npm-global/bin:$PATH
-
-# ANDROID
 export ANDROID_HOME=~/.android-sdk
 export PATH=$PATH:$ANDROID_HOME/emulator/
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/build-tools/25.0.2/
-
-# Fixes sdkmanager error with java versions higher than java 8
-#export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
-
-# JAVA
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
-
-# FLUTTER
 export FLUTTER_HOME=~/flutter
 export PATH=$PATH:$FLUTTER_HOME/bin
-
-# DART
 export PATH=$FLUTTER_HOME/bin/cache/dart-sdk/bin:$PATH
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# CUSTOM SCRIPT
 export PATH=~/.scripts:$PATH
 export PATH=~/bin:$PATH
-
-# XAMPP
 export PATH=$PATH:/opt/lampp
-
-# Change default pager
-#export PAGER="most"
-
-# Resolve
 export PATH=$PATH:/opt/resolve/bin
-
-# GH
 export PATH=$PATH:/home/giacomo/Documents/Software/projects/gh/bin
-
 export EDITOR="nvim"
 
 # Create config alias for git versioning of .config folder
-alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
 
-# Change default mapping for , and . to reproduce < and >
-if [ -f ~/.Xmodmap ];
-then
-  echo "Loading xmodmap"
-  xmodmap ~/.Xmodmap
-fi
-
-alias reloadkc="xmodmap ~/.Xmodmap"
-
-# Open Alias
-alias open="xdg-open"
-
-# pywal
-#setsid wal -i ~/Immagini/city_skyline.jpg
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 # Setting keyboard layout
-setxkbmap it
+#setxkbmap it
 
 ###-tns-completion-start-###
 if [ -f /home/giacomo/.tnsrc ]; then
@@ -268,8 +175,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 unset PROMPT_COMMAND
 
-#eval "$(hub alias -s)"
-
 # PyEnv
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
@@ -278,3 +183,6 @@ eval "$(pyenv virtualenv-init -)"
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
+
+# GH Shell Completion
+eval "$(gh completion -s bash)"

@@ -105,7 +105,7 @@ set foldmethod=indent        " folding by indent
 set foldlevel=99
 set ignorecase               " ignore the case when search texts
 set smartcase                " if searching text contains uppercase case will not be ignored
-set clipboard+=unnamedplus   " Copies using system clipboard
+set clipboard=unnamedplus   " Copies using system clipboard
 set mouse=a mousemodel=popup " enable mouse support
 set wildmenu                 " Show the choices when inserting commands
 set lazyredraw
@@ -395,6 +395,8 @@ let g:license_email = 'giacomoalbe@gmail.com'
 
 " Python Neovim Integration
 let g:python3_host_prog = '/home/giacomo/.pyenv/versions/neovim3/bin/python'
+
+"let g:coc_node_path = '/snap/bin/node'
 
 " AUTO CMD
 augroup AUTOCMD
