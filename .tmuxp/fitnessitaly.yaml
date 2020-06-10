@@ -1,5 +1,5 @@
 session_name: FITNESSITALY
-start_directory: /home/giacomo/Documents/Lavoro/FitnessItaly
+start_directory: /home/giacomo/Documents/Lavoro/FitnessItaly/fitnessitaly
 windows:
   - window_name: Code
     panes:
@@ -13,7 +13,7 @@ windows:
   - window_name: Docker
     panes:
       - shell_command:
-        - dc up -d --build
+        - ./start-dev.sh
   - window_name: Git
     panes:
       - shell_command:

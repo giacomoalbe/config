@@ -1,0 +1,32 @@
+session_name: ONEOSIX
+start_directory: ~/Documents/Lavoro/Digital74/oneosix
+windows:
+  - window_name: Client
+    panes:
+      - shell_command:
+        - cd resources
+        - vim
+  - window_name: Server
+    panes:
+      - shell_command:
+        - vim
+  - window_name: Logs
+    panes:
+      - shell_command:
+        - tail -f storage/logs/laravel.log
+  - window_name: Hot
+    panes:
+      - shell_command:
+        - npm run hot
+  - window_name: Git
+    panes:
+      - shell_command:
+        - gs
+  - window_name: Tinker
+    panes:
+      - shell_command:
+        - clear
+  - window_name: Docker
+    panes:
+      - shell_command:
+        - ./start_dev.sh
